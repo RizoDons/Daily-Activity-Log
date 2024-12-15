@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="noteApp.UpdateNotePage"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Button
+                BackgroundColor="{AppThemeBinding Light=White, Dark=White}"
+                Text="Daily Activity Log"
+                TextColor="Black"
+                HeightRequest="70"
+                HorizontalOptions="Start"
+                FontSize="20"
+                FontFamily="Brittany"
+                Margin="0,20,0,0"
+                CornerRadius="30"
+                x:Name="backButton"
+                />
+            <Button 
+                Text="Save" 
+                x:Name="saveButton"
+                FontSize="20"
+                FontAttributes="Bold"
+                HorizontalOptions="End"
+                Margin="40,0"
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                Style="{StaticResource AppFontStyle}"
+                Clicked="saveButton_Clicked"/>
+            <Button 
+                Text="Delete" 
+                x:Name="deleteButton"
+                Clicked="deleteButton_Clicked"
+                FontSize="20"
+                FontAttributes="Bold"
+                HorizontalOptions="End"
+                Margin="0,-50,120,0"
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                Style="{StaticResource AppFontStyle}"/>
+            <Frame
+                BackgroundColor="Aqua"
+                Margin="60,0"
+                CornerRadius="30"
+                HeightRequest="800">
+                <VerticalStackLayout>
+                    <Entry
+                        x:Name="TitleEntry" 
+                        Placeholder="Type Your Title Here"
+                        PlaceholderColor="White"
+                        BackgroundColor="Transparent"                  
+                        FontFamily="TNRBI"
+                        FontSize="20"
+                        TextColor="Black"   
+                        Text="{Binding Title}"
+                        />
+                    <Entry 
+                        x:Name="DateEntry" 
+                        Placeholder="Date"
+                        FontSize="17"
+                        PlaceholderColor="Black"
+                        FontFamily="TNRBI"
+                        TextColor="Black"
+                        Text="{Binding Date}"
+                        />
+                    <Editor 
+                        x:Name="ContentEditor" 
+                        Placeholder="Type Here..."
+                        PlaceholderColor="Black"
+                        FontFamily="TNRBI"
+                        HeightRequest="650"                
+                        TextColor="Black"
+                        Text="{Binding Content}"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

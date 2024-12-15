@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="noteApp.DeletedNotesPages">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame
+                BackgroundColor="#32620e"
+                CornerRadius="50"
+                WidthRequest="310"
+                Margin="0,30">
+                <HorizontalStackLayout>
+                    <Button
+                    BackgroundColor="{AppThemeBinding Light=White, Dark=White}"
+                    ImageSource="arrow.png"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    CornerRadius="30"
+                    x:Name="backButton"
+                    Clicked="backButton_Clicked"
+                    />
+                    <VerticalStackLayout>
+                        <Label
+                            Text="RECENTLY"
+                            VerticalOptions="Center"
+                            Margin="20,0"
+                            FontSize="30"
+                            FontFamily="TNRB"
+                            TextColor="{AppThemeBinding Light=White, Dark=White}"
+                            Style="{StaticResource AppFontStyle}"
+                            />
+                        <Label
+                            Text="DELETED"
+                            VerticalOptions="Center"
+                            Margin="30,0"
+                            FontSize="30"
+                            FontFamily="TNRB"
+                            TextColor="{AppThemeBinding Light=White, Dark=White}"
+                            Style="{StaticResource AppFontStyle}"
+                            />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Frame>
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="30">
+                <Button 
+                    ImageSource="redo.png" 
+                    x:Name="restoreButton"
+                    BackgroundColor="Transparent"
+                    HeightRequest="70"
+                    Clicked="restoreButton_Clicked"/>
+                <Button 
+                    ImageSource="bin.png"
+                    x:Name="deleteButton"
+                    BackgroundColor="Transparent"
+                    HeightRequest="70"
+                    Clicked="deleteButton_Clicked"/>
+            </HorizontalStackLayout>
+            <Frame
+                BackgroundColor="#32620e"
+                Margin="60,30"
+                CornerRadius="30"
+                >
+                <CollectionView 
+                    x:Name="DeletedNotesCollectionView"
+                    ItemsSource="{Binding Properties}"
+                    SelectionChanged="DeletedNotesCollectionView_SelectionChanged">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
+                            >
+                            <Frame                               
+                                BorderColor="Transparent" 
+                                HasShadow="True"
+                                BackgroundColor="#70FFFFFF"
+                                CornerRadius="20"
+                                >
+                                <Grid ColumnDefinitions="Auto, *"
+                                      
+                                      >
+                                    <CheckBox
+                                        x:Name="DeleteCheckBox" 
+                                        IsChecked="{Binding IsChecked}" 
+                                        Margin="30,0"
+                                        BackgroundColor="Transparent"  
+                                        Scale="2"
+                                        />
+                                    <StackLayout                                       
+                                        Margin="-30,0"
+                                        Grid.Column="1">
+                                        <Label 
+                                            Text="{Binding Title}" 
+                                            FontSize="25" 
+                                            Style="{StaticResource AppFontStyle}"/>
+                                        <Label 
+                                            Text="{Binding Date}" 
+                                            FontSize="14"
+                                            Style="{StaticResource AppFontStyle}"/>
+                                        <Label 
+                                            Text="{Binding Content}" 
+                                            FontSize="12" 
+                                            MaxLines="3"
+                                            Style="{StaticResource AppFontStyle}"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

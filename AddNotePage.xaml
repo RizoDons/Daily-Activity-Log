@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="noteApp.AddNotePage"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Button
+                BackgroundColor="{AppThemeBinding Light=White, Dark=White}"
+                Text="Daily Activity Log"
+                TextColor="Black"
+                HeightRequest="70"
+                HorizontalOptions="Start"
+                FontSize="20"
+                FontFamily="Brittany"
+                Margin="0,20"
+                CornerRadius="30"
+                x:Name="backButton"
+                Clicked="backButton_Clicked"/>
+            <Frame
+                BackgroundColor="DeepSkyBlue"
+                Margin="60,0"
+                CornerRadius="30"
+                HeightRequest="500">
+                <VerticalStackLayout>
+                    <Entry
+                        x:Name="TitleEntry" 
+                        Placeholder="Type Your Title Here"
+                        PlaceholderColor="White"
+                        BackgroundColor="Transparent"                  
+                        FontSize="15"
+                        TextColor="White"   
+                        />
+                    <Entry 
+                        x:Name="DateEntry" 
+                        Placeholder="Date"
+                        FontSize="15"
+                        PlaceholderColor="White"
+                        TextColor="White"
+                        />
+                    <Editor 
+                        x:Name="ContentEditor" 
+                        FontSize="15"
+                        Placeholder="Type Here..."
+                        PlaceholderColor="White"
+                        HeightRequest="500"                
+                        TextColor="White"/>
+                </VerticalStackLayout>
+            </Frame>
+            <Button 
+                Text="Done" 
+                FontSize="25"
+                FontAttributes="Bold"
+                HorizontalOptions="End"
+                Margin="70,30"
+                x:Name="saveButton"
+                Clicked="saveButton_Clicked"
+                BackgroundColor="Pink"
+                TextColor="Black"
+                Style="{StaticResource AppFontStyle}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

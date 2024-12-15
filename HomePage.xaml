@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="noteApp.HomePage"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Daily Activity Log" 
+                   FontSize="25" 
+                   HorizontalOptions="Start" 
+                   FontFamily="Brittany"
+                   Margin="30,20"
+                   TextColor="Black"
+                   />
+            <Button
+                Text="Sign Out"
+                HeightRequest="40"
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                FontAttributes="Bold"
+                Margin="30,0"/>
+        </HorizontalStackLayout>
+        <Frame
+            BackgroundColor="Aqua"
+            CornerRadius="30"
+            Margin="30,0">
+            <CollectionView 
+                x:Name="NotesCollectionView"
+                SelectionMode="Single"
+                SelectionChanged="OnNoteSelected"           
+                ItemsSource="{Binding Properties}"
+                >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                                <Frame 
+                                    Grid.Column="0"
+                                    Padding="10" 
+                                    Margin="5" 
+                                    BorderColor="Transparent" 
+                                    HasShadow="True" 
+                                    CornerRadius="5">
+                                    <StackLayout>
+                                        <Label 
+                                            Text="{Binding Title}" 
+                                            FontSize="20" />
+                                        <Label 
+                                            Text="{Binding Date}" 
+                                            FontSize="14" />
+                                        <Label 
+                                            Text="{Binding Content}" 
+                                            FontSize="12" 
+                                            MaxLines="3" />
+                                    </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            </Frame>
+            <Button 
+                Text="+"
+                FontSize="50"
+                Opacity=".5"
+                CornerRadius="30"
+                HeightRequest="90"
+                WidthRequest="90"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="20,10,20,0"
+                BackgroundColor="Black"
+                x:Name="addNote"
+                Clicked="addNote_Clicked"/>
+        </VerticalStackLayout>
+</ContentPage>
